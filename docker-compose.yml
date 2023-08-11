@@ -1,0 +1,7 @@
+version: '3.9'
+services:
+  ut:
+    build: .
+    container_name: utc
+    tty: true
+    stdin_open: true
