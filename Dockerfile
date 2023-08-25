@@ -2,6 +2,7 @@ FROM ubuntu:22.04
 
 RUN apt update && apt install -y --no-install-recommends \
     ca-certificates \
+    curl \
     git \
     make \
     sudo \
@@ -20,8 +21,8 @@ WORKDIR ${HOME}
 # dotfiles
 RUN export GIT_SSL_NO_VERIFY=1 \
     && mkdir -p ${HOME}/dotfiles \
-    && git clone -b docker https://github.com/atahatah/dotfiles.git ${HOME}/dotfiles \
+    && git clone https://github.com/atahatah/dotfiles.git ${HOME}/dotfiles \
     && cd ${HOME}/dotfiles \
-    && make
+    && make all
 
 CMD [ "/bin/zsh" ]
